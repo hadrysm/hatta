@@ -6,7 +6,18 @@ module.exports = {
     author: '@gatsbyjs',
   },
   plugins: [
-    `gatsby-plugin-styled-components`,
+    {
+      resolve: 'gatsby-plugin-prefetch-google-fonts',
+      options: {
+        fonts: [
+          {
+            family: 'Montserrat',
+            variants: ['400', '600', '700'],
+          },
+        ],
+      },
+    },
+    'gatsby-plugin-styled-components',
     'gatsby-plugin-root-import',
     {
       resolve: 'gatsby-plugin-eslint',

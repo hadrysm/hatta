@@ -1,6 +1,9 @@
 import { createGlobalStyle } from 'styled-components';
+import { normalize } from 'styled-normalize';
 
 const GlobalStyled = createGlobalStyle`
+  ${normalize}
+
  *, *::after, *::before{
   box-sizing: border-box;
   -webkit-font-smoothing: antialiased;

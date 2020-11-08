@@ -6,6 +6,7 @@ module.exports = {
     author: '@gatsbyjs',
   },
   plugins: [
+    `gatsby-plugin-styled-components`,
     'gatsby-plugin-root-import',
     {
       resolve: 'gatsby-plugin-eslint',

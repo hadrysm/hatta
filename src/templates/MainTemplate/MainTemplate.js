@@ -1,7 +1,7 @@
 import React from 'react';
 import PropTypes from 'prop-types';
 
-import GlobalStyled from 'src/assets/styles/GlobalStyles';
+import GlobalStyled from 'assets/styles/GlobalStyles';
 
 const MainTemplate = ({ children }) => {
   return (

@@ -1,7 +1,7 @@
 import React from 'react';
 
-import MainTemplate from 'src/templates/MainTemplate/MainTemplate';
-import SEO from 'src/components/seo';
+import MainTemplate from 'templates/MainTemplate/MainTemplate';
+import SEO from 'components/seo';
 
 const IndexPage = () => (
   <MainTemplate>

@@ -18,7 +18,6 @@ module.exports = {
       },
     },
     'gatsby-plugin-styled-components',
-    'gatsby-plugin-root-import',
     {
       resolve: 'gatsby-plugin-eslint',
       options: {

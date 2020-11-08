@@ -1,3 +1,4 @@
+const path = require('path');
 /**
  * Implement Gatsby's Node APIs in this file.
  *
@@ -7,8 +8,10 @@
 // You can delete this file if you're not using it
 
 exports.onCreateWebpackConfig = ({ stage, actions }) => {
+  const { setWebpackConfig } = actions;
+
   if (stage.startsWith('develop')) {
-    actions.setWebpackConfig({
+    setWebpackConfig({
       resolve: {
         alias: {
           'react-dom': '@hot-loader/react-dom',
@@ -16,4 +19,10 @@ exports.onCreateWebpackConfig = ({ stage, actions }) => {
       },
     });
   }
+
+  setWebpackConfig({
+    resolve: {
+      modules: [path.resolve(__dirname, 'src'), 'node_modules'],
+    },
+  });
 };

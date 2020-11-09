@@ -16,7 +16,8 @@ html{
 
 body{
   font-size: 1.6rem;
-  font-family: ${({ theme }) => theme.font.family.primary}
+  font-family: ${({ theme }) => theme.font.family.primary};
+  background-color: ${({ theme }) => theme.colors.background};
 }
 
 ul {

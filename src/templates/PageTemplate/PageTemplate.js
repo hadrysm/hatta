@@ -21,7 +21,6 @@ const Wrapper = styled.div`
   min-height: 100vh;
   padding: 1rem;
   margin: 0 auto;
-  background-color: ${({ theme }) => theme.colors.background};
 `;
 
 export default PageTemplate;

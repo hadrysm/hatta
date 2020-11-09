@@ -1,11 +1,22 @@
 import React from 'react';
+import PropTypes from 'prop-types';
 import styled from 'styled-components';
 
-const Hamburger = props => (
+const Hamburger = ({ isMenuOpen, ...props }) => (
   <BurgerWrapper {...props}>
-    <Burger />
+    <Burger isMenuOpen={isMenuOpen} />
   </BurgerWrapper>
 );
+
+Hamburger.propTypes = {
+  isMenuOpen: PropTypes.bool,
+};
+
+Hamburger.defaultProps = {
+  isMenuOpen: false,
+};
+
+export default Hamburger;
 
 const BurgerWrapper = styled.button`
   width: 35px;
@@ -19,9 +30,6 @@ const BurgerWrapper = styled.button`
 const Burger = styled.span`
   position: relative;
   display: block;
-  width: 100%;
-  height: 2px;
-  background-color: ${({ theme }) => theme.colors.black};
 
   ::after,
   ::before {
@@ -31,15 +39,19 @@ const Burger = styled.span`
     width: 100%;
     height: 2px;
     background-color: ${({ theme }) => theme.colors.black};
+    transform-origin: center;
+    transition: transform 0.2s cubic-bezier(0.17, 0.67, 1, 1.23);
   }
 
   ::before {
-    top: 6px;
+    top: 3px;
+    transform: ${({ isMenuOpen }) =>
+      isMenuOpen ? 'translateY(-3px) rotate(135deg)' : 'translateY(0) rotate(0deg)'};
   }
 
   ::after {
-    top: -6px;
+    top: -3px;
+    transform: ${({ isMenuOpen }) =>
+      isMenuOpen ? 'translateY(3px) rotate(-135deg)' : 'translateY(0px) rotate(0deg)'};
   }
 `;
-
-export default Hamburger;

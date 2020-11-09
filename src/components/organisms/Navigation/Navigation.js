@@ -18,7 +18,7 @@ const Navigation = () => {
     <Wrapper>
       <Logo />
       <NavList isMenuOpen={isMenuOpen} />
-      <Hamburger onClick={toggleMenuVisibility} />
+      <Hamburger onClick={toggleMenuVisibility} isMenuOpen={isMenuOpen} />
     </Wrapper>
   );
 };

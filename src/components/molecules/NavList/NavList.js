@@ -3,15 +3,34 @@ import PropTypes from 'prop-types';
 import styled from 'styled-components';
 import { Link } from 'gatsby';
 
-const menuData = ['about', 'articles', 'gallery', 'contact'];
+import routes from 'routes';
+
+const menuData = [
+  {
+    path: routes.about,
+    label: 'about',
+  },
+  {
+    path: routes.articles,
+    label: 'articles',
+  },
+  {
+    path: routes.gallery,
+    label: 'gallery',
+  },
+  {
+    path: routes.contact,
+    label: 'contact',
+  },
+];
 
 const NavList = ({ isMenuOpen }) => {
   return (
     <Wrapper isMenuOpen={isMenuOpen}>
       <List>
-        {menuData.map(item => (
-          <ListItem key={item}>
-            <Link to={`/${item}`}>{item}</Link>
+        {menuData.map(({ path, label }) => (
+          <ListItem key={path}>
+            <Link to={path}>{label}</Link>
           </ListItem>
         ))}
       </List>

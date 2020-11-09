@@ -39,7 +39,7 @@ export const theme = {
   }, {}),
 
   layout: {
-    maxContainerWidth: '140rem',
+    maxContainerWidth: '140.4rem',
     mainSpacing: '2rem',
   },
 

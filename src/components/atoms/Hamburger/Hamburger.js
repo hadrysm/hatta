@@ -16,8 +16,6 @@ Hamburger.defaultProps = {
   isMenuOpen: false,
 };
 
-export default Hamburger;
-
 const BurgerWrapper = styled.button`
   width: 35px;
   height: 35px;
@@ -55,3 +53,5 @@ const Burger = styled.span`
       isMenuOpen ? 'translateY(3px) rotate(-135deg)' : 'translateY(0px) rotate(0deg)'};
   }
 `;
+
+export default Hamburger;

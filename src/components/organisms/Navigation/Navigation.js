@@ -24,9 +24,11 @@ const Navigation = () => {
 };
 
 const Wrapper = styled.nav`
+  position: relative;
   display: flex;
   justify-content: space-between;
   align-items: center;
+  z-index: ${({ theme }) => theme.zIndex.level9};
 `;
 
 export default Navigation;

@@ -1,12 +1,27 @@
 import React from 'react';
+import PropTypes from 'prop-types';
 import styled from 'styled-components';
+import { graphql } from 'gatsby';
+import Img from 'gatsby-image';
 
 import SEO from 'components/utilities/SEO/SEO';
 import Headline from 'components/atoms/Headline/Headline';
 import Paragraph from 'components/atoms/Paragraph/Paragraph';
 import Button from 'components/atoms/Button/Button';
 
-const IndexPage = () => (
+export const query = graphql`
+  {
+    file(name: { eq: "hero" }) {
+      childImageSharp {
+        fluid(maxWidth: 800, maxHeight: 1200, quality: 90) {
+          ...GatsbyImageSharpFluid_noBase64
+        }
+      }
+    }
+  }
+`;
+
+const IndexPage = ({ data }) => (
   <>
     <SEO title="Home" />
     <ContentWrapper>
@@ -18,18 +33,38 @@ const IndexPage = () => (
         real.
       </Paragraph>
       <Button>estimate project</Button>
+      <ImgWrapper>
+        <Img fluid={data.file.childImageSharp.fluid} />
+      </ImgWrapper>
     </ContentWrapper>
   </>
 );
 
+IndexPage.propTypes = {
+  data: PropTypes.shape({
+    file: PropTypes.shape({
+      childImageSharp: PropTypes.shape({
+        fluid: PropTypes.oneOfType([PropTypes.shape({}), PropTypes.arrayOf(PropTypes.shape({}))]),
+      }),
+    }),
+  }).isRequired,
+};
+
 const ContentWrapper = styled.div`
   display: flex;
   flex-direction: column;
-  max-width: 500;
   align-items: center;
-  padding: 4.5rem 3rem 0;
   justify-content: center;
+  max-width: 500px;
+  margin: 0 auto;
+  padding: 4.5rem 3rem 0;
   text-align: center;
+`;
+
+const ImgWrapper = styled.div`
+  position: relative;
+  width: 100%;
+  margin-top: 2rem;
 `;
 
 export default IndexPage;

@@ -9,18 +9,6 @@ import Headline from 'components/atoms/Headline/Headline';
 import Paragraph from 'components/atoms/Paragraph/Paragraph';
 import Button from 'components/atoms/Button/Button';
 
-export const query = graphql`
-  {
-    file(name: { eq: "hero" }) {
-      childImageSharp {
-        fluid(maxWidth: 800, maxHeight: 1200, quality: 90) {
-          ...GatsbyImageSharpFluid_noBase64
-        }
-      }
-    }
-  }
-`;
-
 const IndexPage = ({ data }) => (
   <>
     <SEO title="Home" />
@@ -40,15 +28,17 @@ const IndexPage = ({ data }) => (
   </>
 );
 
-IndexPage.propTypes = {
-  data: PropTypes.shape({
-    file: PropTypes.shape({
-      childImageSharp: PropTypes.shape({
-        fluid: PropTypes.oneOfType([PropTypes.shape({}), PropTypes.arrayOf(PropTypes.shape({}))]),
-      }),
-    }),
-  }).isRequired,
-};
+export const query = graphql`
+  {
+    file(name: { eq: "hero" }) {
+      childImageSharp {
+        fluid(maxWidth: 800, maxHeight: 1200, quality: 90) {
+          ...GatsbyImageSharpFluid_noBase64
+        }
+      }
+    }
+  }
+`;
 
 const ContentWrapper = styled.div`
   display: flex;
@@ -66,5 +56,15 @@ const ImgWrapper = styled.div`
   width: 100%;
   margin-top: 2rem;
 `;
+
+IndexPage.propTypes = {
+  data: PropTypes.shape({
+    file: PropTypes.shape({
+      childImageSharp: PropTypes.shape({
+        fluid: PropTypes.oneOfType([PropTypes.shape({}), PropTypes.arrayOf(PropTypes.shape({}))]),
+      }),
+    }),
+  }).isRequired,
+};
 
 export default IndexPage;

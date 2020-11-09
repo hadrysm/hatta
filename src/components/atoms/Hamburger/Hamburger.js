@@ -8,14 +8,6 @@ const Hamburger = ({ isMenuOpen, ...props }) => (
   </BurgerWrapper>
 );
 
-Hamburger.propTypes = {
-  isMenuOpen: PropTypes.bool,
-};
-
-Hamburger.defaultProps = {
-  isMenuOpen: false,
-};
-
 const BurgerWrapper = styled.button`
   width: 35px;
   height: 35px;
@@ -23,6 +15,7 @@ const BurgerWrapper = styled.button`
   border: none;
   background-color: transparent;
   outline: none;
+  cursor: pointer;
 `;
 
 const Burger = styled.span`
@@ -53,5 +46,13 @@ const Burger = styled.span`
       isMenuOpen ? 'translateY(3px) rotate(-135deg)' : 'translateY(0px) rotate(0deg)'};
   }
 `;
+
+Hamburger.propTypes = {
+  isMenuOpen: PropTypes.bool,
+};
+
+Hamburger.defaultProps = {
+  isMenuOpen: false,
+};
 
 export default Hamburger;

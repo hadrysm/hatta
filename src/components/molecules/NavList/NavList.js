@@ -38,16 +38,6 @@ const NavList = ({ isMenuOpen }) => {
   );
 };
 
-NavList.propTypes = {
-  isMenuOpen: PropTypes.bool,
-};
-
-NavList.defaultProps = {
-  isMenuOpen: false,
-};
-
-export default NavList;
-
 const Wrapper = styled.div`
   position: fixed;
   top: 0;
@@ -74,3 +64,13 @@ const ListItem = styled.li`
   font-size: ${({ theme }) => theme.font.size.xs};
   font-weight: ${({ theme }) => theme.font.weight.semiBold};
 `;
+
+NavList.propTypes = {
+  isMenuOpen: PropTypes.bool,
+};
+
+NavList.defaultProps = {
+  isMenuOpen: false,
+};
+
+export default NavList;

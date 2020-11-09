@@ -15,10 +15,9 @@ html{
 }
 
 body{
-  margin:0;
-  padding:0;
   font-size: 1.6rem;
-  font-family: 'Montserrat', sans-serif;
+  font-family: ${({ theme }) => theme.font.family.primary};
+  background-color: ${({ theme }) => theme.colors.background};
 }
 
 ul {
@@ -30,6 +29,11 @@ ul {
 img{
   display: block;
   width: 100%;
+}
+
+a {
+  color: ${({ theme }) => theme.colors.black};
+  text-decoration: none;
 }
 `;
 

@@ -29,6 +29,11 @@ img{
   display: block;
   width: 100%;
 }
+
+a {
+  color: ${({ theme }) => theme.colors.black};
+  text-decoration: none;
+}
 `;
 
 export default GlobalStyled;

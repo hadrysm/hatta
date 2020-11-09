@@ -1,7 +1,7 @@
 import React from 'react';
 
 import MainTemplate from 'templates/MainTemplate/MainTemplate';
-import SEO from 'components/seo';
+import SEO from 'components/utilities/SEO/SEO';
 
 const ArticlesPage = () => (
   <MainTemplate>

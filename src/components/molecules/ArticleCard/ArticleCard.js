@@ -1,0 +1,56 @@
+import React from 'react';
+import PropTypes from 'prop-types';
+import styled from 'styled-components';
+import Img from 'gatsby-image';
+import { Link } from 'gatsby';
+
+import routes from 'routes';
+
+import Headline from 'components/atoms/Headline/Headline';
+
+const ArticleCard = ({ fluid, title, slug }) => {
+  return (
+    <Wrapper to={`${routes.articles}/${slug}`}>
+      <StyledImg fluid={fluid} />
+      <InnerWrapper>
+        <StyledHeadlie>{title}</StyledHeadlie>
+      </InnerWrapper>
+    </Wrapper>
+  );
+};
+
+const Wrapper = styled(Link)`
+  width: 100%;
+  height: 28rem;
+  position: relative;
+  overflow: hidden;
+`;
+
+const InnerWrapper = styled.div`
+  position: absolute;
+  top: 1.7rem;
+  left: 0;
+  width: 80%;
+  padding: 2rem 3rem;
+  background-color: ${({ theme }) => theme.colors.black};
+`;
+
+const StyledImg = styled(Img)`
+  position: absolute !important;
+  top: 0;
+  left: 0;
+  width: 100%;
+`;
+
+const StyledHeadlie = styled(Headline)`
+  font-size: ${({ theme }) => theme.font.size.s};
+  color: ${({ theme }) => theme.colors.white};
+`;
+
+ArticleCard.propTypes = {
+  fluid: PropTypes.objectOf(PropTypes.oneOfType([PropTypes.string, PropTypes.number])).isRequired,
+  title: PropTypes.string.isRequired,
+  slug: PropTypes.string.isRequired,
+};
+
+export default ArticleCard;

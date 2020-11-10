@@ -43,7 +43,6 @@ const ContentWrapper = styled.div`
   flex-direction: column;
   align-items: center;
   justify-content: center;
-  max-width: 700px;
   width: 100%;
   margin: 0 auto;
   padding: 4.5rem 3rem 0;

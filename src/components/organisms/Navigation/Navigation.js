@@ -27,7 +27,7 @@ const Wrapper = styled.nav`
   position: absolute;
   top: 0rem;
   left: 0rem;
-  padding: 4rem;
+  padding: 1.5rem 2rem;
   width: 100%;
   display: flex;
   justify-content: space-between;
@@ -36,6 +36,7 @@ const Wrapper = styled.nav`
 
   ${({ theme }) => theme.mq.bigTablet} {
     justify-content: flex-start;
+    padding: 4rem 3rem;
   }
 `;
 

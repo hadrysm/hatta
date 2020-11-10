@@ -10,7 +10,7 @@ const Wrapper = styled.section`
   margin: 1rem 0;
   display: grid;
   align-items: center;
-  grid-template-columns: repeat(auto-fit, minmax(320px, 1fr));
+  grid-template-columns: repeat(auto-fit, minmax(380px, 1fr));
   gap: 2rem;
 `;
 

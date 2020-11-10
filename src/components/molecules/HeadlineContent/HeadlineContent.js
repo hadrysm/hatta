@@ -15,7 +15,7 @@ const HeadlineContent = ({ title, paragraph }) => {
 };
 
 const Wrapper = styled.div`
-  margin: 5.5rem auto 6rem;
+  margin: 2rem auto 6rem;
   text-align: center;
   max-width: 40rem;
 

@@ -16,12 +16,12 @@ PageTemplate.propTypes = {
 };
 
 const Wrapper = styled.div`
-  position: relative;
   width: 100%;
-  max-width: ${({ theme }) => theme.layout.maxContainerWidth};
+  /* max-width: ${({ theme }) => theme.layout.maxContainerWidth}; */
   min-height: 100vh;
   padding: 1rem 1rem 0 1rem;
   margin: 0 auto;
+  overflow: hidden;
 
   ${({ theme }) => theme.mq.bigTablet} {
     padding: 1rem 8.4rem;

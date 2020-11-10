@@ -9,6 +9,8 @@ const Hamburger = ({ isMenuOpen, ...props }) => (
 );
 
 const BurgerWrapper = styled.button`
+  position: relative;
+  z-index: ${({ theme }) => theme.zIndex.level10};
   width: 35px;
   height: 35px;
   padding: 0.5rem;

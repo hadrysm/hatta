@@ -1,12 +1,67 @@
 import React from 'react';
+import PropTypes from 'prop-types';
+import { graphql } from 'gatsby';
+import Img from 'gatsby-image';
+
+import GridTemplate from 'templates/GridTemplate/GridTemplate';
 
 import SEO from 'components/utilities/SEO/SEO';
+import HeadlineContent from 'components/molecules/HeadlineContent/HeadlineContent';
 
-const GalleryPage = () => (
+const galleryHeadline = {
+  title: 'gallery',
+  paragraph:
+    'While artists work from real to the abstract, architects must work from the abstract to the real. ',
+};
+
+const GalleryPage = ({
+  data: {
+    allFile: { edges },
+  },
+}) => (
   <>
     <SEO title="Home" />
-    <h1>Hi gallery</h1>
+    <HeadlineContent title={galleryHeadline.title} paragraph={galleryHeadline.paragraph} />
+    <GridTemplate>
+      {edges.map(({ node: { id, childImageSharp } }) => (
+        <Img key={id} fluid={childImageSharp.fluid} />
+      ))}
+    </GridTemplate>
   </>
 );
+
+export const query = graphql`
+  {
+    allFile(filter: { absolutePath: { regex: "/gallery/" } }) {
+      edges {
+        node {
+          childImageSharp {
+            fluid(maxWidth: 900, maxHeight: 600, quality: 100) {
+              ...GatsbyImageSharpFluid_noBase64
+            }
+          }
+          id
+        }
+      }
+    }
+  }
+`;
+
+GalleryPage.propTypes = {
+  data: PropTypes.shape({
+    allFile: PropTypes.shape({
+      edges: PropTypes.arrayOf(
+        PropTypes.shape({
+          childImageSharp: PropTypes.shape({
+            fluid: PropTypes.oneOfType([
+              PropTypes.shape({}),
+              PropTypes.arrayOf(PropTypes.shape({})),
+            ]),
+          }),
+        }),
+      ),
+    }),
+  }).isRequired,
+};
 
 export default GalleryPage;

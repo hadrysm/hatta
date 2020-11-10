@@ -24,7 +24,11 @@ const Navigation = () => {
 };
 
 const Wrapper = styled.nav`
-  position: relative;
+  position: absolute;
+  top: 0rem;
+  left: 0rem;
+  padding: 4rem;
+  width: 100%;
   display: flex;
   justify-content: space-between;
   align-items: center;

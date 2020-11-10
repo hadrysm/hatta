@@ -29,6 +29,10 @@ const Wrapper = styled.nav`
   justify-content: space-between;
   align-items: center;
   z-index: ${({ theme }) => theme.zIndex.level9};
+
+  ${({ theme }) => theme.mq.bigTablet} {
+    justify-content: flex-start;
+  }
 `;
 
 export default Navigation;

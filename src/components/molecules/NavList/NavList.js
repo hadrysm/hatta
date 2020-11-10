@@ -50,6 +50,15 @@ const Wrapper = styled.div`
   background-color: ${({ theme }) => theme.colors.white};
   transform: ${({ isMenuOpen }) => (isMenuOpen ? 'translateX(0)' : 'translateX(100%)')};
   transition: transform 0.2s ease-in-out;
+
+  ${({ theme }) => theme.mq.bigTablet} {
+    position: static;
+    height: auto;
+    width: auto;
+    transform: translateX(0);
+    margin-left: 4.3rem;
+    background-color: transparent;
+  }
 `;
 
 const List = styled.ul`
@@ -57,12 +66,21 @@ const List = styled.ul`
   flex-direction: column;
   justify-content: center;
   align-items: center;
+
+  ${({ theme }) => theme.mq.bigTablet} {
+    flex-direction: row;
+  }
 `;
 
 const ListItem = styled.li`
   margin-bottom: 5rem;
   font-size: ${({ theme }) => theme.font.size.xs};
   font-weight: ${({ theme }) => theme.font.weight.semiBold};
+
+  ${({ theme }) => theme.mq.bigTablet} {
+    margin-bottom: 0rem;
+    margin-right: 3.2rem;
+  }
 `;
 
 NavList.propTypes = {

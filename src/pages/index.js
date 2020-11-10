@@ -64,7 +64,6 @@ const ContentWrapper = styled.div`
 `;
 
 const StyledImg = styled(Img)`
-  position: relative;
   width: 100%;
   margin-top: 2rem;
 

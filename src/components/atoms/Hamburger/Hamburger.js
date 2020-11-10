@@ -16,6 +16,10 @@ const BurgerWrapper = styled.button`
   background-color: transparent;
   outline: none;
   cursor: pointer;
+
+  ${({ theme }) => theme.mq.bigTablet} {
+    display: none;
+  }
 `;
 
 const Burger = styled.span`

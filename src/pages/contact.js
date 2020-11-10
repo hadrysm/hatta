@@ -2,7 +2,7 @@ import React from 'react';
 
 import SEO from 'components/utilities/SEO/SEO';
 import HeadlineContent from 'components/molecules/HeadlineContent/HeadlineContent';
-import Input from 'components/atoms/Input/Input';
+import ContactForm from 'components/organisms/ContactForm/ContactForm';
 
 const concactHeadline = {
   title: 'concact',
@@ -14,16 +14,7 @@ const ContactPage = () => (
   <>
     <SEO title="Home" />
     <HeadlineContent title={concactHeadline.title} paragraph={concactHeadline.paragraph} />
-    <Input type="text" name="name" label="name" value="Adam" onChange={() => {}} />
-    <Input type="email" name="email" label="e-mail" value="adam@gmail.com" onChange={() => {}} />
-    <Input
-      as="textarea"
-      type="text"
-      name="message"
-      label="message"
-      value="PM me"
-      onChange={() => {}}
-    />
+    <ContactForm />
   </>
 );
 

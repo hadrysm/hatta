@@ -54,26 +54,25 @@ const AboutSection = styled.section`
 
   ${({ theme }) => theme.mq.bigTablet} {
     width: 40%;
+    padding: 2rem 0;
   }
 
-  ::after {
-    content: '';
-    position: absolute;
-    width: 100vw;
-    height: 4px;
-    top: 0;
-    left: -10%;
-    background-color: ${({ theme }) => theme.colors.black};
-  }
-
+  ::after,
   ::before {
     content: '';
     position: absolute;
-    width: 100vw;
-    height: 3px;
-    bottom: 0;
-    left: -10%;
+    width: 100%;
+    height: 4px;
+    left: 0;
     background-color: ${({ theme }) => theme.colors.black};
+  }
+
+  ::after {
+    top: 0;
+  }
+
+  ::before {
+    bottom: 0;
   }
 `;
 

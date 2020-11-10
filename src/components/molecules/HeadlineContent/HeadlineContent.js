@@ -15,13 +15,13 @@ const HeadlineContent = ({ title, paragraph }) => {
 };
 
 const Wrapper = styled.div`
-  margin: 2rem auto 6rem;
+  margin: 2rem auto 3rem;
   text-align: center;
   max-width: 40rem;
 
   ${({ theme }) => theme.mq.bigTablet} {
     text-align: left;
-    margin: 5.5rem 0 6rem;
+    margin: 5.5rem 0 4rem;
   }
 `;
 

@@ -9,7 +9,10 @@ const Headline = styled.h1`
     isBig &&
     css`
       font-size: ${({ theme }) => theme.font.size.l};
-      // add media for bigger font
+
+      ${({ theme }) => theme.mq.bigTablet} {
+        font-size: ${({ theme }) => theme.font.size.xl};
+      }
     `}
 `;
 

@@ -5,14 +5,12 @@ import styled from 'styled-components';
 import Headline from 'components/atoms/Headline/Headline';
 import Paragraph from 'components/atoms/Paragraph/Paragraph';
 
-const HeadlineContent = ({ title, paragraph }) => {
-  return (
-    <Wrapper>
-      <Headline>{title}</Headline>
-      <Paragraph>{paragraph}</Paragraph>
-    </Wrapper>
-  );
-};
+const HeadlineContent = ({ title, paragraph }) => (
+  <Wrapper>
+    <Headline>{title}</Headline>
+    <Paragraph>{paragraph}</Paragraph>
+  </Wrapper>
+);
 
 const Wrapper = styled.div`
   margin: 2rem auto 3rem;

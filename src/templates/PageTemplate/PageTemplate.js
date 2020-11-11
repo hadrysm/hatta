@@ -11,13 +11,8 @@ const PageTemplate = ({ children }) => (
   </Wrapper>
 );
 
-PageTemplate.propTypes = {
-  children: PropTypes.oneOfType([PropTypes.arrayOf(PropTypes.node), PropTypes.node]).isRequired,
-};
-
 const Wrapper = styled.div`
   width: 100%;
-  /* max-width: ${({ theme }) => theme.layout.maxContainerWidth}; */
   min-height: 100vh;
   padding: 1rem 1rem 0 1rem;
   margin: 0 auto;
@@ -31,5 +26,9 @@ const Wrapper = styled.div`
 const MainContent = styled.main`
   padding-top: 5rem;
 `;
+
+PageTemplate.propTypes = {
+  children: PropTypes.oneOfType([PropTypes.arrayOf(PropTypes.node), PropTypes.node]).isRequired,
+};
 
 export default PageTemplate;

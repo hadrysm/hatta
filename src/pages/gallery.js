@@ -20,7 +20,7 @@ const GalleryPage = ({
   },
 }) => (
   <>
-    <SEO title="Home" />
+    <SEO title="Gallery" />
     <HeadlineContent title={galleryHeadline.title} paragraph={galleryHeadline.paragraph} />
     <GridTemplate>
       {edges.map(({ node: { id, childImageSharp } }) => (
@@ -37,7 +37,7 @@ export const query = graphql`
         node {
           childImageSharp {
             fluid(maxWidth: 900, maxHeight: 600, quality: 100) {
-              ...GatsbyImageSharpFluid_noBase64
+              ...GatsbyImageSharpFluid_tracedSVG
             }
           }
           id

@@ -8,16 +8,14 @@ import routes from 'routes';
 
 import Headline from 'components/atoms/Headline/Headline';
 
-const ArticleCard = ({ fluid, title, slug }) => {
-  return (
-    <Wrapper to={`${routes.articles}/${slug}`}>
-      <StyledImg fluid={fluid} />
-      <InnerWrapper>
-        <StyledHeadlie>{title}</StyledHeadlie>
-      </InnerWrapper>
-    </Wrapper>
-  );
-};
+const ArticleCard = ({ fluid, title, slug }) => (
+  <Wrapper to={`${routes.articles}/${slug}`}>
+    <StyledImg fluid={fluid} />
+    <InnerWrapper>
+      <StyledHeadlie>{title}</StyledHeadlie>
+    </InnerWrapper>
+  </Wrapper>
+);
 
 const Wrapper = styled(Link)`
   width: 100%;

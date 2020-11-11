@@ -2,14 +2,12 @@ import React from 'react';
 import PropTypes from 'prop-types';
 import styled, { css } from 'styled-components';
 
-const Input = ({ type, name, tag, label, value, maxLength, ...props }) => {
-  return (
-    <Wrapper>
-      <Label htmlFor={name}>{label}</Label>
-      <StyledInput type={type} as={tag} name={name} id={name} value={value} {...props} />
-    </Wrapper>
-  );
-};
+const Input = ({ type, name, tag, label, value, maxLength, ...props }) => (
+  <Wrapper>
+    <Label htmlFor={name}>{label}</Label>
+    <StyledInput type={type} as={tag} name={name} id={name} value={value} {...props} />
+  </Wrapper>
+);
 
 const Wrapper = styled.div`
   width: 100%;
@@ -32,7 +30,6 @@ const StyledInput = styled.input`
     css`
       min-height: 20rem;
       max-width: 60rem;
-
       resize: none;
     `}
 `;

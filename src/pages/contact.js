@@ -12,7 +12,7 @@ const concactHeadline = {
 
 const ContactPage = () => (
   <>
-    <SEO title="Home" />
+    <SEO title="Contact" />
     <HeadlineContent title={concactHeadline.title} paragraph={concactHeadline.paragraph} />
     <ContactForm />
   </>

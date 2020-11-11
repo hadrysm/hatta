@@ -14,7 +14,7 @@ const ContactForm = () => {
         errors.email = 'Required';
       }
       if (!email) {
-        errors.email = 'Pole jest wymagane';
+        errors.email = 'Required';
       } else if (!/^[A-Z0-9._%+-]+@[A-Z0-9.-]+\.[A-Z]{2,}$/i.test(email)) {
         errors.email = 'Invalid email address';
       }

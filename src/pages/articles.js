@@ -17,7 +17,7 @@ const articlesHeadline = {
 
 const ArticlesPage = ({ data }) => (
   <>
-    <SEO title="Home" />
+    <SEO title="Articles" />
     <HeadlineContent title={articlesHeadline.title} paragraph={articlesHeadline.paragraph} />
     <GridTemplate>
       {data.allDatoCmsArticle.nodes.map(({ title, image: { fluid } }) => (

@@ -24,19 +24,17 @@ const menuData = [
   },
 ];
 
-const NavList = ({ isMenuOpen }) => {
-  return (
-    <Wrapper isMenuOpen={isMenuOpen}>
-      <List>
-        {menuData.map(({ path, label }) => (
-          <ListItem key={path}>
-            <Link to={path}>{label}</Link>
-          </ListItem>
-        ))}
-      </List>
-    </Wrapper>
-  );
-};
+const NavList = ({ isMenuOpen }) => (
+  <Wrapper isMenuOpen={isMenuOpen}>
+    <List>
+      {menuData.map(({ path, label }) => (
+        <ListItem key={path}>
+          <Link to={path}>{label}</Link>
+        </ListItem>
+      ))}
+    </List>
+  </Wrapper>
+);
 
 const Wrapper = styled.div`
   position: fixed;

@@ -17,7 +17,7 @@ const aboutHeadline = {
 
 const AboutPage = ({ data }) => (
   <>
-    <SEO title="Home" />
+    <SEO title="About" />
     <HeadlineContent title={aboutHeadline.title} paragraph={aboutHeadline.paragraph} />
     <AboutSection>
       <Paragraph>
@@ -39,7 +39,7 @@ export const query = graphql`
     file(name: { eq: "person" }) {
       childImageSharp {
         fluid(maxWidth: 1200, maxHeight: 1600, quality: 90) {
-          ...GatsbyImageSharpFluid_noBase64
+          ...GatsbyImageSharpFluid_tracedSVG
         }
       }
     }

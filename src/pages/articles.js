@@ -34,12 +34,13 @@ const ArticlesPage = ({ data }) => (
 
 export const query = graphql`
   {
-    allDatoCmsArticle {
+    allDatoCmsArticle(sort: { fields: [date], order: DESC }) {
       nodes {
         title
+        date
         image {
           fluid(maxHeight: 900, maxWidth: 600) {
-            ...GatsbyDatoCmsFluid_noBase64
+            ...GatsbyDatoCmsFluid_tracedSVG
           }
         }
       }
@@ -51,7 +52,7 @@ ArticlesPage.propTypes = {
   data: PropTypes.shape({
     allDatoCmsArticle: PropTypes.shape({
       nodes: PropTypes.arrayOf(
-        PropTypes.oneOfType([PropTypes.string, PropTypes.number, PropTypes.object]),
+        PropTypes.shape([PropTypes.string, PropTypes.number, PropTypes.object]),
       ),
     }),
   }).isRequired,

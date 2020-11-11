@@ -33,6 +33,7 @@ exports.createPages = async ({ graphql, actions }) => {
         allDatoCmsArticle {
           nodes {
             title
+            id
           }
         }
       }
@@ -40,21 +41,14 @@ exports.createPages = async ({ graphql, actions }) => {
   );
 
   // Create blog post pages.
-  result.data.allDatoCmsArticle.nodes.forEach(({ title }) => {
+  result.data.allDatoCmsArticle.nodes.forEach(({ title, id }) => {
     const slugifyTitle = slugify(title, { lower: true });
 
     createPage({
       path: `articles/${slugifyTitle}`,
       component: articlePostTemplate,
       context: {
-        // Add optional context data to be inserted
-        // as props into the page component..
-        //
-        // The context data can also be used as
-        // arguments to the page GraphQL query.
-        //
-        // The page "path" is always available as a GraphQL
-        // argument.
+        id,
       },
     });
   });

@@ -2,9 +2,11 @@ import React from 'react';
 import styled from 'styled-components';
 import { Link } from 'gatsby';
 
+import routes from 'routes';
+
 const Logo = () => (
   <StyledLogo>
-    <Link to="/">hatta</Link>
+    <Link to={routes.home}>hatta</Link>
   </StyledLogo>
 );
 

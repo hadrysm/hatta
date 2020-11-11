@@ -9,18 +9,6 @@ import Headline from 'components/atoms/Headline/Headline';
 import Paragraph from 'components/atoms/Paragraph/Paragraph';
 import Button from 'components/atoms/Button/Button';
 
-export const query = graphql`
-  {
-    file(name: { eq: "hero" }) {
-      childImageSharp {
-        fluid(maxWidth: 800, maxHeight: 1200, quality: 90) {
-          ...GatsbyImageSharpFluid_noBase64
-        }
-      }
-    }
-  }
-`;
-
 const IndexPage = ({ data }) => (
   <>
     <SEO title="Home" />
@@ -33,12 +21,65 @@ const IndexPage = ({ data }) => (
         real.
       </Paragraph>
       <Button>estimate project</Button>
-      <ImgWrapper>
-        <Img fluid={data.file.childImageSharp.fluid} />
-      </ImgWrapper>
     </ContentWrapper>
+    <StyledImg fluid={data.file.childImageSharp.fluid} />
   </>
 );
+
+export const query = graphql`
+  {
+    file(name: { eq: "hero" }) {
+      childImageSharp {
+        fluid(maxWidth: 1200, maxHeight: 1600, quality: 90) {
+          ...GatsbyImageSharpFluid_tracedSVG
+        }
+      }
+    }
+  }
+`;
+
+const ContentWrapper = styled.div`
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+  justify-content: center;
+  width: 100%;
+  margin: 0 auto;
+  padding: 4.5rem 3rem 0;
+  text-align: center;
+
+  ${({ theme }) => theme.mq.bigTablet} {
+    align-items: flex-end;
+    text-align: right;
+    width: 60%;
+    height: calc(100vh - 80px);
+    margin: 0;
+    padding: 0 3.4rem;
+
+    p {
+      width: 60%;
+    }
+  }
+`;
+
+const StyledImg = styled(Img)`
+  width: 100%;
+  margin-top: 2rem;
+
+  ${({ theme }) => theme.mq.tablet} {
+    width: 80%;
+    margin: 2rem auto;
+  }
+
+  ${({ theme }) => theme.mq.bigTablet} {
+    position: absolute !important;
+    right: 0;
+    top: 0;
+    bottom: 0;
+    width: 40%;
+    margin: 0;
+  }
+`;
 
 IndexPage.propTypes = {
   data: PropTypes.shape({
@@ -49,22 +90,5 @@ IndexPage.propTypes = {
     }),
   }).isRequired,
 };
-
-const ContentWrapper = styled.div`
-  display: flex;
-  flex-direction: column;
-  align-items: center;
-  justify-content: center;
-  max-width: 500px;
-  margin: 0 auto;
-  padding: 4.5rem 3rem 0;
-  text-align: center;
-`;
-
-const ImgWrapper = styled.div`
-  position: relative;
-  width: 100%;
-  margin-top: 2rem;
-`;
 
 export default IndexPage;

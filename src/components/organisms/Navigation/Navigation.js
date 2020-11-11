@@ -24,11 +24,20 @@ const Navigation = () => {
 };
 
 const Wrapper = styled.nav`
-  position: relative;
+  position: absolute;
+  top: 0rem;
+  left: 0rem;
+  padding: 1.5rem 2rem;
+  width: 100%;
   display: flex;
   justify-content: space-between;
   align-items: center;
   z-index: ${({ theme }) => theme.zIndex.level9};
+
+  ${({ theme }) => theme.mq.bigTablet} {
+    justify-content: flex-start;
+    padding: 4rem 3rem;
+  }
 `;
 
 export default Navigation;

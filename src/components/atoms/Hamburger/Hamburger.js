@@ -8,21 +8,20 @@ const Hamburger = ({ isMenuOpen, ...props }) => (
   </BurgerWrapper>
 );
 
-Hamburger.propTypes = {
-  isMenuOpen: PropTypes.bool,
-};
-
-Hamburger.defaultProps = {
-  isMenuOpen: false,
-};
-
 const BurgerWrapper = styled.button`
+  position: relative;
+  z-index: ${({ theme }) => theme.zIndex.level10};
   width: 35px;
   height: 35px;
   padding: 0.5rem;
   border: none;
   background-color: transparent;
   outline: none;
+  cursor: pointer;
+
+  ${({ theme }) => theme.mq.bigTablet} {
+    display: none;
+  }
 `;
 
 const Burger = styled.span`
@@ -53,5 +52,13 @@ const Burger = styled.span`
       isMenuOpen ? 'translateY(3px) rotate(-135deg)' : 'translateY(0px) rotate(0deg)'};
   }
 `;
+
+Hamburger.propTypes = {
+  isMenuOpen: PropTypes.bool,
+};
+
+Hamburger.defaultProps = {
+  isMenuOpen: false,
+};
 
 export default Hamburger;

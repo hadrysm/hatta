@@ -1,11 +1,18 @@
+require('dotenv').config();
+
 module.exports = {
   siteMetadata: {
-    title: 'Gatsby Default Starter',
-    description:
-      'Kick off your next, great Gatsby project with this default starter. This barebones starter ships with the main Gatsby configuration files you might need.',
-    author: '@gatsbyjs',
+    title: 'Abigail Donutdough',
+    description: 'Lorem lorem lorem lorem lorem lorem lorem lorem lorem lorme lorme loem lorme',
+    author: '@hadrysm',
   },
   plugins: [
+    {
+      resolve: `gatsby-source-datocms`,
+      options: {
+        apiToken: process.env.DATOCMS_READ_ONLY_API_KEY,
+      },
+    },
     {
       resolve: `gatsby-plugin-layout`,
       options: {

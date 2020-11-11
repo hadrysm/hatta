@@ -23,7 +23,6 @@ const Wrapper = styled(Link)`
   width: 100%;
   height: 28rem;
   position: relative;
-  overflow: hidden;
 `;
 
 const InnerWrapper = styled.div`
@@ -36,10 +35,9 @@ const InnerWrapper = styled.div`
 `;
 
 const StyledImg = styled(Img)`
-  position: absolute !important;
-  top: 0;
-  left: 0;
   width: 100%;
+  height: 100%;
+  object-fit: cover;
 `;
 
 const StyledHeadlie = styled(Headline)`

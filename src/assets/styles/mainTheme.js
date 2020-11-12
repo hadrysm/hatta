@@ -11,7 +11,8 @@ export const theme = {
   colors: {
     black: '#000000',
     white: '#ffffff',
-    background: '#f0efeb',
+    background: '#f4f4f4',
+    primary: '#f0efeb',
   },
   font: {
     family: {

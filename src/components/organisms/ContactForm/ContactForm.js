@@ -4,8 +4,11 @@ import { useFormik } from 'formik';
 
 import Input from 'components/atoms/Input/Input';
 import Button from 'components/atoms/Button/Button';
+import { useFadeInAnimation } from 'hooks/useFadeInAnimation';
 
 const ContactForm = () => {
+  const ref = useFadeInAnimation({ y: 20 });
+
   const { values, handleChange, handleSubmit } = useFormik({
     initialValues: { name: '', email: '', message: '' },
     validate: ({ name, email, message }) => {
@@ -30,7 +33,7 @@ const ContactForm = () => {
 
   return (
     <Wrapper>
-      <form onSubmit={handleSubmit}>
+      <form onSubmit={handleSubmit} ref={ref}>
         <Input name="name" label="name" value={values.name} onChange={handleChange} />
         <Input
           type="email"

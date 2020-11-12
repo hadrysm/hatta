@@ -8,17 +8,23 @@ module.exports = {
   },
   plugins: [
     {
+      resolve: 'gatsby-plugin-transition-link',
+      options: {
+        layout: require.resolve(`./src/templates/MainTemplate/MainTemplate.js`),
+      },
+    },
+    {
       resolve: `gatsby-source-datocms`,
       options: {
         apiToken: process.env.DATOCMS_READ_ONLY_API_KEY,
       },
     },
-    {
-      resolve: `gatsby-plugin-layout`,
-      options: {
-        component: require.resolve(`./src/templates/MainTemplate/MainTemplate.js`),
-      },
-    },
+    // {
+    //   resolve: `gatsby-plugin-layout`,
+    //   options: {
+    //     component: require.resolve(`./src/templates/MainTemplate/MainTemplate.js`),
+    //   },
+    // },
     {
       resolve: 'gatsby-plugin-prefetch-google-fonts',
       options: {

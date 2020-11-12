@@ -1,7 +1,7 @@
 import React from 'react';
 import PropTypes from 'prop-types';
 import styled from 'styled-components';
-import { Link } from 'gatsby';
+import TPLink from 'providers/PageTransitionProviders';
 
 import routes from 'routes';
 
@@ -29,7 +29,7 @@ const NavList = ({ isMenuOpen }) => (
     <List>
       {menuData.map(({ path, label }) => (
         <ListItem key={path}>
-          <Link to={path}>{label}</Link>
+          <TPLink to={path}>{label}</TPLink>
         </ListItem>
       ))}
     </List>

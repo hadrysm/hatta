@@ -1,18 +1,14 @@
-import React, { useState, useEffect } from 'react';
+import React, { useContext } from 'react';
 import styled from 'styled-components';
+
+import { NavigationStateContext } from 'providers/NavigationStateProvider';
 
 import Hamburger from 'components/atoms/Hamburger/Hamburger';
 import Logo from 'components/atoms/Logo/Logo';
 import NavList from 'components/molecules/NavList/NavList';
 
 const Navigation = () => {
-  const [isMenuOpen, setMenuVisibility] = useState(false);
-  const toggleMenuVisibility = () => setMenuVisibility(prevState => !prevState);
-  const { pathname } = window.location;
-
-  useEffect(() => {
-    setMenuVisibility(false);
-  }, [pathname]);
+  const { toggleMenuVisibility, isMenuOpen } = useContext(NavigationStateContext);
 
   return (
     <Wrapper>

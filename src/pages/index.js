@@ -21,17 +21,16 @@ const IndexPage = ({ data }) => {
 
     gsap.set(image.children, { transformOrigin: 'center' });
 
-    const tl = gsap.timeline({ defaults: { ease: 'power3.out' } });
+    const tl = gsap.timeline({ defaults: { ease: 'power3.out', duration: 1.4 } });
 
     tl.from(elements, {
-      duration: 1,
       delay: 1,
       y: -60,
       autoAlpha: 0,
       stagger: 0.15,
     })
-      .from(image, { duration: 1.2, y: -1280 }, '-=1')
-      .from(image.children, { duration: 1.3, scale: 1.4 }, '-=0.8');
+      .from(image, { y: -1280 }, '-=1')
+      .from(image.children, { scale: 1.4 }, '-=1.2');
   }, [container, imageContainer]);
 
   return (

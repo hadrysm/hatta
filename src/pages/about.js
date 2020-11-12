@@ -20,13 +20,14 @@ const AboutPage = ({ data }) => {
   const container = useRef(null);
 
   useEffect(() => {
+    const wrapper = container.current;
     const elements = container.current.children;
 
     const tl = gsap.timeline({ defaults: { ease: 'power3.out', delay: 1 } });
 
-    gsap.set(container.current, { scaleX: 0, transformOrigin: 'left' });
+    gsap.set(wrapper, { scaleX: 0, transformOrigin: 'left' });
 
-    tl.to(container.current, { duration: 1.5, scaleX: 1 }).fromTo(
+    tl.to(wrapper, { duration: 1.5, scaleX: 1 }).fromTo(
       elements,
       {
         autoAlpha: 0,

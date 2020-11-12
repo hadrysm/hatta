@@ -6,12 +6,15 @@ import Img from 'gatsby-image';
 
 import Headline from 'components/atoms/Headline/Headline';
 import Paragraph from 'components/atoms/Paragraph/Paragraph';
+import { useFadeInAnimation } from 'hooks/useFadeInAnimation';
 
 const ArticlePostTemplate = ({
   data: {
     datoCmsArticle: { title, author, articleContent, image },
   },
 }) => {
+  const ref = useFadeInAnimation();
+
   return (
     <>
       <Header>
@@ -20,7 +23,7 @@ const ArticlePostTemplate = ({
         <Author>{author}</Author>
       </Header>
 
-      <Content>
+      <Content ref={ref}>
         {articleContent.map(item => {
           const itemKey = Object.keys(item).pop();
           switch (itemKey) {

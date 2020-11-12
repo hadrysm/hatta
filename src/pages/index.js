@@ -29,7 +29,7 @@ const IndexPage = ({ data }) => {
       autoAlpha: 0,
       stagger: 0.15,
     })
-      .from(image, { y: -1280 }, '-=1')
+      .from(image, { y: -1280 }, '-=1.6')
       .from(image.children, { scale: 1.4 }, '-=1.2');
   }, [container, imageContainer]);
 

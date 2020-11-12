@@ -2,22 +2,24 @@ import React from 'react';
 import PropTypes from 'prop-types';
 import styled from 'styled-components';
 import Img from 'gatsby-image';
-import { Link } from 'gatsby';
+import TPLink from 'providers/PageTransitionProviders';
 
 import routes from 'routes';
 
 import Headline from 'components/atoms/Headline/Headline';
 
 const ArticleCard = ({ fluid, title, slug }) => (
-  <Wrapper to={`${routes.articles}/${slug}`}>
-    <StyledImg fluid={fluid} />
-    <InnerWrapper>
-      <StyledHeadlie>{title}</StyledHeadlie>
-    </InnerWrapper>
-  </Wrapper>
+  <TPLink to={`${routes.articles}/${slug}`}>
+    <Wrapper>
+      <StyledImg fluid={fluid} />
+      <InnerWrapper>
+        <StyledHeadlie>{title}</StyledHeadlie>
+      </InnerWrapper>
+    </Wrapper>
+  </TPLink>
 );
 
-const Wrapper = styled(Link)`
+const Wrapper = styled.div`
   width: 100%;
   height: 28rem;
   position: relative;

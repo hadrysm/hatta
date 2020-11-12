@@ -1,30 +1,60 @@
-import React from 'react';
+import React, { useEffect, useRef } from 'react';
 import PropTypes from 'prop-types';
 import styled from 'styled-components';
+import gsap from 'gsap';
 import { graphql } from 'gatsby';
 import Img from 'gatsby-image';
 
 import SEO from 'components/utilities/SEO/SEO';
 import Headline from 'components/atoms/Headline/Headline';
 import Paragraph from 'components/atoms/Paragraph/Paragraph';
+
 import Button from 'components/atoms/Button/Button';
 
-const IndexPage = ({ data }) => (
-  <>
-    <SEO title="Home" />
-    <ContentWrapper>
-      <Headline isBig>
-        Your new <br /> space
-      </Headline>
-      <Paragraph>
-        While artists work from real to the abstract, architects must work from the abstract to the
-        real.
-      </Paragraph>
-      <Button>estimate project</Button>
-    </ContentWrapper>
-    <StyledImg fluid={data.file.childImageSharp.fluid} />
-  </>
-);
+const IndexPage = ({ data }) => {
+  const container = useRef(null);
+  const imageContainer = useRef(null);
+
+  useEffect(() => {
+    const elementsContent = container.current.children;
+    const [image] = imageContainer.current.children;
+
+    gsap.set(image.children, { transformOrigin: 'center' });
+
+    const tl = gsap.timeline({ defaults: { ease: 'power3.out' } });
+
+    tl.from(elementsContent, {
+      duration: 1,
+      delay: 1,
+      y: 60,
+      opacity: 0,
+      stagger: { amount: 0.15 },
+    })
+      .from(image, { duration: 1.2, y: 1280 }, '-=1')
+      .from(image.children, { duration: 1.3, scale: 1.3 }, '-=1');
+  }, [container, imageContainer]);
+
+  return (
+    <>
+      <SEO title="Home" />
+      <ContentWrapper ref={container}>
+        <Headline isBig>
+          Your new <br /> space
+        </Headline>
+        <Paragraph>
+          While artists work from real to the abstract, architects must work from the abstract to
+          the real.
+        </Paragraph>
+        <Button>estimate project</Button>
+      </ContentWrapper>
+      <ImageWrapper ref={imageContainer}>
+        <Inner>
+          <StyledImg fluid={data.file.childImageSharp.fluid} />
+        </Inner>
+      </ImageWrapper>
+    </>
+  );
+};
 
 export const query = graphql`
   {
@@ -62,9 +92,11 @@ const ContentWrapper = styled.div`
   }
 `;
 
-const StyledImg = styled(Img)`
+const ImageWrapper = styled.div`
+  position: relative;
   width: 100%;
   margin-top: 2rem;
+  overflow: hidden;
 
   ${({ theme }) => theme.mq.tablet} {
     width: 80%;
@@ -72,13 +104,24 @@ const StyledImg = styled(Img)`
   }
 
   ${({ theme }) => theme.mq.bigTablet} {
-    position: absolute !important;
+    position: absolute;
     right: 0;
     top: 0;
     bottom: 0;
     width: 40%;
     margin: 0;
   }
+`;
+
+const StyledImg = styled(Img)`
+  width: 100%;
+  height: 100%;
+  object-fit: cover;
+`;
+
+const Inner = styled.div`
+  height: 100%;
+  width: 100%;
 `;
 
 IndexPage.propTypes = {

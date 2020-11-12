@@ -1,6 +1,7 @@
-import React from 'react';
+import React, { useEffect, useRef } from 'react';
 import PropTypes from 'prop-types';
 import styled from 'styled-components';
+import gsap from 'gsap';
 import Img from 'gatsby-image';
 import { graphql } from 'gatsby';
 
@@ -15,24 +16,50 @@ const aboutHeadline = {
     'While artists work from real to the abstract, architects must work from the abstract to the real. ',
 };
 
-const AboutPage = ({ data }) => (
-  <>
-    <SEO title="About" />
-    <HeadlineContent title={aboutHeadline.title} paragraph={aboutHeadline.paragraph} />
-    <AboutSection>
-      <Paragraph>
-        Architectural design is primarily driven by the holistically creative manipulation of mass,
-        space, volume, texture, light, shadow, materials, program, and Realistic elements such as
-        cost, construction and technology, in order to achieve an end which is aesthetic, functional
-        and often artistic. This distinguishes Architecture from engineering design, which is
-        usually driven primarily by the creative application of mathematical and scientific
-        principles.
-      </Paragraph>
-      <StyledHeadline>Abigail Donutdough</StyledHeadline>
-    </AboutSection>
-    <StyledImg fluid={data.file.childImageSharp.fluid} />
-  </>
-);
+const AboutPage = ({ data }) => {
+  const container = useRef(null);
+
+  useEffect(() => {
+    const elements = container.current.children;
+
+    const tl = gsap.timeline({ defaults: { ease: 'power3.out', delay: 1 } });
+
+    gsap.set(container.current, { scaleX: 0, transformOrigin: 'left' });
+
+    tl.to(container.current, { duration: 1.5, scaleX: 1 }).fromTo(
+      elements,
+      {
+        autoAlpha: 0,
+        y: -60,
+      },
+      { duration: 1, autoAlpha: 1, y: 0, stagger: 0.15 },
+      '-=1.5',
+    );
+  }, [container]);
+
+  return (
+    <Wrapper>
+      <SEO title="About" />
+      <div>
+        <HeadlineContent title={aboutHeadline.title} paragraph={aboutHeadline.paragraph} />
+        <AboutSection ref={container}>
+          <Paragraph>
+            Architectural design is primarily driven by the holistically creative manipulation of
+            mass, space, volume, texture, light, shadow, materials, program, and Realistic elements
+            such as cost, construction and technology, in order to achieve an end which is
+            aesthetic, functional and often artistic. This distinguishes Architecture from
+            engineering design, which is usually driven primarily by the creative application of
+            mathematical and scientific principles.
+          </Paragraph>
+          <StyledHeadline>Abigail Donutdough</StyledHeadline>
+        </AboutSection>
+      </div>
+      <ImageWrapper>
+        <StyledImg fluid={data.file.childImageSharp.fluid} />
+      </ImageWrapper>
+    </Wrapper>
+  );
+};
 
 export const query = graphql`
   {
@@ -46,14 +73,25 @@ export const query = graphql`
   }
 `;
 
+const Wrapper = styled.div`
+  display: flex;
+  flex-direction: column;
+  justify-content: flex-start;
+  align-items: center;
+
+  ${({ theme }) => theme.mq.bigTablet} {
+    flex-direction: row;
+  }
+`;
+
 const AboutSection = styled.section`
   position: relative;
   width: 100%;
+  max-width: 80rem;
   padding: 2rem 0.5rem;
-  margin-bottom: 3.8rem;
+  margin-bottom: 2rem;
 
   ${({ theme }) => theme.mq.bigTablet} {
-    width: 40%;
     padding: 2rem 0;
   }
 
@@ -80,17 +118,20 @@ const StyledHeadline = styled(Headline)`
   font-size: ${({ theme }) => theme.font.size.m};
 `;
 
-const StyledImg = styled(Img)`
-  margin: 0 3rem 1rem;
+const ImageWrapper = styled.div`
+  width: 100%;
+  max-width: 40rem;
+  overflow: hidden;
 
   ${({ theme }) => theme.mq.bigTablet} {
-    position: absolute !important;
-    width: 50%;
-    top: 0;
-    right: 0;
-    bottom: 0;
-    margin: 0;
+    margin: auto 0 auto 3rem;
   }
+`;
+
+const StyledImg = styled(Img)`
+  width: 100%;
+  height: 100%;
+  object-fit: cover;
 `;
 
 AboutPage.propTypes = {

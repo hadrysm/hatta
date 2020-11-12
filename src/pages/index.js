@@ -16,22 +16,22 @@ const IndexPage = ({ data }) => {
   const imageContainer = useRef(null);
 
   useEffect(() => {
-    const elementsContent = container.current.children;
+    const elements = container.current.children;
     const [image] = imageContainer.current.children;
 
     gsap.set(image.children, { transformOrigin: 'center' });
 
     const tl = gsap.timeline({ defaults: { ease: 'power3.out' } });
 
-    tl.from(elementsContent, {
+    tl.from(elements, {
       duration: 1,
       delay: 1,
-      y: 60,
-      opacity: 0,
-      stagger: { amount: 0.15 },
+      y: -60,
+      autoAlpha: 0,
+      stagger: 0.15,
     })
-      .from(image, { duration: 1.2, y: 1280 }, '-=1')
-      .from(image.children, { duration: 1.3, scale: 1.3 }, '-=1');
+      .from(image, { duration: 1.2, y: -1280 }, '-=1')
+      .from(image.children, { duration: 1.3, scale: 1.4 }, '-=0.8');
   }, [container, imageContainer]);
 
   return (

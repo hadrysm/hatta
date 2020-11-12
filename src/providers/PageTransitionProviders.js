@@ -46,7 +46,7 @@ const PageTransitionProviders = ({ children, to }) => {
     tl.to(box, {
       x: vw,
       delay: 0.5,
-      duration: 0.5,
+      duration: 1,
       onComplete: () => {
         body.removeChild(box);
       },

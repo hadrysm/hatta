@@ -1,12 +1,12 @@
 import React from 'react';
 import styled from 'styled-components';
-import { Link } from 'gatsby';
+import TPLink from 'providers/PageTransitionProviders';
 
 import routes from 'routes';
 
 const Logo = () => (
   <StyledLogo>
-    <Link to={routes.home}>hatta</Link>
+    <TPLink to={routes.home}>hatta</TPLink>
   </StyledLogo>
 );
 

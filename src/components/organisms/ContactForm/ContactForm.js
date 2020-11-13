@@ -1,11 +1,17 @@
-import React from 'react';
+import React, { useEffect, useRef } from 'react';
 import styled from 'styled-components';
 import { useFormik } from 'formik';
 
 import Input from 'components/atoms/Input/Input';
 import Button from 'components/atoms/Button/Button';
 
+import { fadeInUpStagger } from 'animations';
+
+// import { useGsapAnimation } from 'hooks/useGsapAnimation';
+
 const ContactForm = () => {
+  const container = useRef(null);
+
   const { values, handleChange, handleSubmit } = useFormik({
     initialValues: { name: '', email: '', message: '' },
     validate: ({ name, email, message }) => {
@@ -21,6 +27,7 @@ const ContactForm = () => {
       if (!message) {
         errors.message = 'Required';
       }
+
       return errors;
     },
     onSubmit: data => {
@@ -28,9 +35,15 @@ const ContactForm = () => {
     },
   });
 
+  useEffect(() => {
+    const elements = container.current.children;
+
+    fadeInUpStagger(elements);
+  }, [container]);
+
   return (
     <Wrapper>
-      <form onSubmit={handleSubmit}>
+      <form onSubmit={handleSubmit} ref={container}>
         <Input name="name" label="name" value={values.name} onChange={handleChange} />
         <Input
           type="email"
@@ -54,6 +67,7 @@ const ContactForm = () => {
 
 const Wrapper = styled.div`
   margin-bottom: 2rem;
+  overflow: hidden;
 `;
 
 export default ContactForm;

@@ -1,4 +1,4 @@
-import React from 'react';
+import React, { useEffect, useRef } from 'react';
 import PropTypes from 'prop-types';
 import styled from 'styled-components';
 import { graphql } from 'gatsby';
@@ -6,14 +6,21 @@ import Img from 'gatsby-image';
 
 import Headline from 'components/atoms/Headline/Headline';
 import Paragraph from 'components/atoms/Paragraph/Paragraph';
-import { useFadeInAnimation } from 'hooks/useFadeInAnimation';
+
+import { fadeInUpStagger } from 'animations';
 
 const ArticlePostTemplate = ({
   data: {
     datoCmsArticle: { title, author, articleContent, image },
   },
 }) => {
-  const ref = useFadeInAnimation();
+  const container = useRef(null);
+
+  useEffect(() => {
+    const elements = container.current.children;
+
+    fadeInUpStagger(elements);
+  }, [container, fadeInUpStagger]);
 
   return (
     <>
@@ -23,7 +30,7 @@ const ArticlePostTemplate = ({
         <Author>{author}</Author>
       </Header>
 
-      <Content ref={ref}>
+      <Content ref={container}>
         {articleContent.map(item => {
           const itemKey = Object.keys(item).pop();
           switch (itemKey) {
@@ -114,6 +121,7 @@ const StyledImgContent = styled(Img)`
 const Content = styled.div`
   max-width: 80rem;
   margin: 0 auto;
+  overflow: hidden;
 `;
 
 ArticlePostTemplate.propTypes = {

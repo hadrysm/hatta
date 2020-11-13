@@ -1,21 +1,28 @@
-import React, { useState, useEffect } from 'react';
+import React, { useContext, useRef, useEffect } from 'react';
+import gsap from 'gsap';
 import styled from 'styled-components';
+
+import { NavigationStateContext } from 'providers/NavigationStateProvider';
 
 import Hamburger from 'components/atoms/Hamburger/Hamburger';
 import Logo from 'components/atoms/Logo/Logo';
 import NavList from 'components/molecules/NavList/NavList';
 
 const Navigation = () => {
-  const [isMenuOpen, setMenuVisibility] = useState(false);
-  const toggleMenuVisibility = () => setMenuVisibility(prevState => !prevState);
-  const { pathname } = window.location;
+  const { toggleMenuVisibility, isMenuOpen } = useContext(NavigationStateContext);
+
+  const container = useRef(null);
+
+  const tl = gsap.timeline({ defaults: { ease: 'power3.out', duration: 1.4 } });
 
   useEffect(() => {
-    setMenuVisibility(false);
-  }, [pathname]);
+    const { current } = container;
+
+    tl.from(current, { y: -60, autoAlpha: 0 });
+  }, []);
 
   return (
-    <Wrapper>
+    <Wrapper ref={container}>
       <Logo />
       <NavList isMenuOpen={isMenuOpen} />
       <Hamburger onClick={toggleMenuVisibility} isMenuOpen={isMenuOpen} />

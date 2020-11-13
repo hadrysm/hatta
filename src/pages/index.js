@@ -1,7 +1,6 @@
 import React, { useEffect, useRef } from 'react';
 import PropTypes from 'prop-types';
 import styled from 'styled-components';
-import gsap from 'gsap';
 import { graphql } from 'gatsby';
 import Img from 'gatsby-image';
 
@@ -11,26 +10,17 @@ import Paragraph from 'components/atoms/Paragraph/Paragraph';
 
 import Button from 'components/atoms/Button/Button';
 
+import { staggerRevealHome } from 'animations';
+
 const IndexPage = ({ data }) => {
   const container = useRef(null);
   const imageContainer = useRef(null);
 
   useEffect(() => {
-    const elements = container.current.children;
+    const contentElements = container.current.children;
     const [image] = imageContainer.current.children;
 
-    gsap.set(image.children, { transformOrigin: 'center' });
-
-    const tl = gsap.timeline({ defaults: { ease: 'power3.out', duration: 1.4 } });
-
-    tl.from(elements, {
-      delay: 1,
-      y: -60,
-      autoAlpha: 0,
-      stagger: 0.15,
-    })
-      .from(image, { y: -1280 }, '-=1.6')
-      .from(image.children, { scale: 1.4 }, '-=1.2');
+    staggerRevealHome([contentElements, image]);
   }, [container, imageContainer]);
 
   return (
@@ -47,9 +37,7 @@ const IndexPage = ({ data }) => {
         <Button>estimate project</Button>
       </ContentWrapper>
       <ImageWrapper ref={imageContainer}>
-        <Inner>
-          <StyledImg fluid={data.file.childImageSharp.fluid} />
-        </Inner>
+        <StyledImg fluid={data.file.childImageSharp.fluid} />
       </ImageWrapper>
     </>
   );
@@ -116,11 +104,6 @@ const StyledImg = styled(Img)`
   width: 100%;
   height: 100%;
   object-fit: cover;
-`;
-
-const Inner = styled.div`
-  height: 100%;
-  width: 100%;
 `;
 
 IndexPage.propTypes = {

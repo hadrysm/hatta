@@ -1,6 +1,5 @@
-import React from 'react';
+import React, { useEffect, useRef } from 'react';
 import PropTypes from 'prop-types';
-
 import { graphql } from 'gatsby';
 import Img from 'gatsby-image';
 
@@ -8,7 +7,8 @@ import GridTemplate from 'templates/GridTemplate/GridTemplate';
 
 import SEO from 'components/utilities/SEO/SEO';
 import HeadlineContent from 'components/molecules/HeadlineContent/HeadlineContent';
-import { useFadeInAnimation } from 'hooks/useFadeInAnimation';
+
+import { fadeInUpStagger } from 'animations';
 
 const galleryHeadline = {
   title: 'gallery',
@@ -21,13 +21,19 @@ const GalleryPage = ({
     allFile: { edges },
   },
 }) => {
-  const ref = useFadeInAnimation();
+  const container = useRef(null);
+
+  useEffect(() => {
+    const elements = container.current.children;
+
+    fadeInUpStagger(elements);
+  }, [container]);
 
   return (
     <>
       <SEO title="Gallery" />
       <HeadlineContent title={galleryHeadline.title} paragraph={galleryHeadline.paragraph} />
-      <GridTemplate ref={ref}>
+      <GridTemplate ref={container}>
         {edges.map(({ node: { id, childImageSharp } }) => (
           <Img key={id} fluid={childImageSharp.fluid} />
         ))}

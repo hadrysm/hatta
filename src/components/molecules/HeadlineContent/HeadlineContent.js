@@ -1,12 +1,11 @@
 import React, { useEffect, useRef } from 'react';
 import PropTypes from 'prop-types';
-import gsap from 'gsap';
 import styled from 'styled-components';
 
 import Headline from 'components/atoms/Headline/Headline';
 import Paragraph from 'components/atoms/Paragraph/Paragraph';
 
-import { splitTextToChars } from 'helpers';
+import { staggerText } from 'animations';
 
 const HeadlineContent = ({ title, paragraph }) => {
   const container = useRef(null);
@@ -14,15 +13,7 @@ const HeadlineContent = ({ title, paragraph }) => {
   useEffect(() => {
     const [header, text] = container.current.children;
 
-    const tl = gsap.timeline({ defaults: { ease: 'power3.out' } });
-
-    tl.from([splitTextToChars(header), text], {
-      duration: 0.4,
-      delay: 1,
-      autoAlpha: 0,
-      y: -60,
-      stagger: 0.1,
-    });
+    staggerText([header, text]);
   }, [container]);
 
   return (

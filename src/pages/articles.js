@@ -1,6 +1,5 @@
-import React from 'react';
+import React, { useEffect, useRef } from 'react';
 import PropTypes from 'prop-types';
-
 import { graphql } from 'gatsby';
 import slugify from 'slugify';
 
@@ -10,7 +9,7 @@ import SEO from 'components/utilities/SEO/SEO';
 import HeadlineContent from 'components/molecules/HeadlineContent/HeadlineContent';
 import ArticleCard from 'components/molecules/ArticleCard/ArticleCard';
 
-import { useFadeInAnimation } from 'hooks/useFadeInAnimation';
+import { fadeInUpStagger } from 'animations';
 
 const articlesHeadline = {
   title: 'articles',
@@ -19,13 +18,19 @@ const articlesHeadline = {
 };
 
 const ArticlesPage = ({ data }) => {
-  const ref = useFadeInAnimation();
+  const container = useRef(null);
+
+  useEffect(() => {
+    const elements = container.current.children;
+
+    fadeInUpStagger(elements);
+  }, [container]);
 
   return (
     <>
       <SEO title="Articles" />
       <HeadlineContent title={articlesHeadline.title} paragraph={articlesHeadline.paragraph} />
-      <GridTemplate ref={ref}>
+      <GridTemplate ref={container}>
         {data.allDatoCmsArticle.nodes.map(({ title, image: { fluid } }) => (
           <ArticleCard
             key={title}

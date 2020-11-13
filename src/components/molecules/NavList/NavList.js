@@ -1,9 +1,11 @@
 import React from 'react';
 import PropTypes from 'prop-types';
 import styled from 'styled-components';
+
 import TPLink from 'providers/PageTransitionProviders';
 
 import routes from 'routes';
+import { handleHover, handleHoverExit } from 'animations';
 
 const menuData = [
   {
@@ -24,17 +26,23 @@ const menuData = [
   },
 ];
 
-const NavList = ({ isMenuOpen }) => (
-  <Wrapper isMenuOpen={isMenuOpen}>
-    <List>
-      {menuData.map(({ path, label }) => (
-        <ListItem key={path}>
-          <TPLink to={path}>{label}</TPLink>
-        </ListItem>
-      ))}
-    </List>
-  </Wrapper>
-);
+const NavList = ({ isMenuOpen }) => {
+  return (
+    <Wrapper isMenuOpen={isMenuOpen}>
+      <List>
+        {menuData.map(({ path, label }) => (
+          <ListItem
+            key={path}
+            onMouseEnter={({ target }) => handleHover(target)}
+            onMouseOut={({ target }) => handleHoverExit(target)}
+          >
+            <TPLink to={path}>{label}</TPLink>
+          </ListItem>
+        ))}
+      </List>
+    </Wrapper>
+  );
+};
 
 const Wrapper = styled.div`
   position: fixed;
@@ -71,6 +79,7 @@ const List = styled.ul`
 `;
 
 const ListItem = styled.li`
+  display: block;
   margin-bottom: 5rem;
   font-size: ${({ theme }) => theme.font.size.xs};
   font-weight: ${({ theme }) => theme.font.weight.semiBold};

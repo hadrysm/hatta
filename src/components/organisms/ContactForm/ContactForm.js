@@ -8,7 +8,7 @@ import Button from 'components/atoms/Button/Button';
 import { useGsapAnimation } from 'hooks/useGsapAnimation';
 
 const ContactForm = () => {
-  const ref = useGsapAnimation({ y: 20 });
+  const ref = useGsapAnimation({ y: 20, autoAlpha: 0 });
 
   const { values, handleChange, handleSubmit } = useFormik({
     initialValues: { name: '', email: '', message: '' },

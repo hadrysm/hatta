@@ -1,9 +1,9 @@
 {
-  "name": "gatsby-starter-default",
+  "name": "hatta-website",
   "private": true,
   "description": "A simple starter to get up and developing quickly with Gatsby",
   "version": "0.1.0",
-  "author": "Kyle Mathews <mathews.kyle@gmail.com>",
+  "author": "Mateusz Hadryś <m.hadrys.95@gmail.com>",
   "dependencies": {
     "@hot-loader/react-dom": "^16.12.0",
     "babel-plugin-styled-components": "^1.11.1",
@@ -45,7 +45,7 @@
     "prettier": "^2.1.2"
   },
   "keywords": [
-    "gatsby"
+    "gatsby, datoCMS, gsap, react"
   ],
   "license": "0BSD",
   "scripts": {

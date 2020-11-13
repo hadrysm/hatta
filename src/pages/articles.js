@@ -10,7 +10,7 @@ import SEO from 'components/utilities/SEO/SEO';
 import HeadlineContent from 'components/molecules/HeadlineContent/HeadlineContent';
 import ArticleCard from 'components/molecules/ArticleCard/ArticleCard';
 
-import { useFadeInAnimation } from 'hooks/useFadeInAnimation';
+import { useGsapAnimation } from 'hooks/useGsapAnimation';
 
 const articlesHeadline = {
   title: 'articles',
@@ -19,7 +19,7 @@ const articlesHeadline = {
 };
 
 const ArticlesPage = ({ data }) => {
-  const ref = useFadeInAnimation();
+  const ref = useGsapAnimation();
 
   return (
     <>

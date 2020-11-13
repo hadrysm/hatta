@@ -77,7 +77,7 @@ export const query = graphql`
 const Wrapper = styled.div`
   display: flex;
   flex-direction: column;
-  justify-content: flex-start;
+  justify-content: space;
   align-items: center;
 
   ${({ theme }) => theme.mq.bigTablet} {

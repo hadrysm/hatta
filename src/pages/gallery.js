@@ -8,7 +8,7 @@ import GridTemplate from 'templates/GridTemplate/GridTemplate';
 
 import SEO from 'components/utilities/SEO/SEO';
 import HeadlineContent from 'components/molecules/HeadlineContent/HeadlineContent';
-import { useFadeInAnimation } from 'hooks/useFadeInAnimation';
+import { useGsapAnimation } from 'hooks/useGsapAnimation';
 
 const galleryHeadline = {
   title: 'gallery',
@@ -21,7 +21,7 @@ const GalleryPage = ({
     allFile: { edges },
   },
 }) => {
-  const ref = useFadeInAnimation();
+  const ref = useGsapAnimation();
 
   return (
     <>

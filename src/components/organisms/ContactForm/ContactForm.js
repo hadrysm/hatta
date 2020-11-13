@@ -4,10 +4,11 @@ import { useFormik } from 'formik';
 
 import Input from 'components/atoms/Input/Input';
 import Button from 'components/atoms/Button/Button';
-import { useFadeInAnimation } from 'hooks/useFadeInAnimation';
+
+import { useGsapAnimation } from 'hooks/useGsapAnimation';
 
 const ContactForm = () => {
-  const ref = useFadeInAnimation({ y: 20 });
+  const ref = useGsapAnimation({ y: 20 });
 
   const { values, handleChange, handleSubmit } = useFormik({
     initialValues: { name: '', email: '', message: '' },

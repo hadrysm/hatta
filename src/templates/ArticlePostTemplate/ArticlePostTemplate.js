@@ -6,14 +6,15 @@ import Img from 'gatsby-image';
 
 import Headline from 'components/atoms/Headline/Headline';
 import Paragraph from 'components/atoms/Paragraph/Paragraph';
-import { useFadeInAnimation } from 'hooks/useFadeInAnimation';
+
+import { useGsapAnimation } from 'hooks/useGsapAnimation';
 
 const ArticlePostTemplate = ({
   data: {
     datoCmsArticle: { title, author, articleContent, image },
   },
 }) => {
-  const ref = useFadeInAnimation();
+  const ref = useGsapAnimation();
 
   return (
     <>

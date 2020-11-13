@@ -1,11 +1,11 @@
 import React from 'react';
 import PropTypes from 'prop-types';
-import gsap from 'gsap';
 import styled from 'styled-components';
 
 import TPLink from 'providers/PageTransitionProviders';
 
 import routes from 'routes';
+import { handleHover, handleHoverExit } from 'animations';
 
 const menuData = [
   {
@@ -27,32 +27,14 @@ const menuData = [
 ];
 
 const NavList = ({ isMenuOpen }) => {
-  const handleHover = e => {
-    gsap.to(e.target, {
-      duration: 0.3,
-      scale: 1.2,
-      skewX: 4,
-      ease: 'power1.inOut',
-    });
-  };
-
-  const handleHoverExit = e => {
-    gsap.to(e.target, {
-      duration: 0.3,
-      scale: 1,
-      skewX: 0,
-      ease: 'power1.inOut',
-    });
-  };
-
   return (
     <Wrapper isMenuOpen={isMenuOpen}>
       <List>
         {menuData.map(({ path, label }) => (
           <ListItem
             key={path}
-            onMouseEnter={e => handleHover(e)}
-            onMouseOut={e => handleHoverExit(e)}
+            onMouseEnter={({ target }) => handleHover(target)}
+            onMouseOut={({ target }) => handleHoverExit(target)}
           >
             <TPLink to={path}>{label}</TPLink>
           </ListItem>

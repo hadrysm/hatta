@@ -17,3 +17,21 @@ export const splitTextToChars = node => {
 
   return node.children;
 };
+
+export const createBox = bgColor => {
+  const { body } = document;
+
+  const box = document.createElement('div');
+  const vw = window.innerWidth;
+  const vh = window.innerHeight;
+
+  box.style.zIndex = '999999';
+  box.style.position = 'fixed';
+  box.style.bottom = 0;
+  box.style.backgroundColor = bgColor;
+  box.style.width = `${vw}px`;
+  box.style.height = `${vh}px`;
+
+  body.appendChild(box);
+  return { box, body, vw };
+};

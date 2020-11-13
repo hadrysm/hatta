@@ -1,7 +1,6 @@
 import React, { useEffect, useRef } from 'react';
 import PropTypes from 'prop-types';
 import styled from 'styled-components';
-import gsap from 'gsap';
 import { graphql } from 'gatsby';
 import Img from 'gatsby-image';
 
@@ -11,25 +10,17 @@ import Paragraph from 'components/atoms/Paragraph/Paragraph';
 
 import Button from 'components/atoms/Button/Button';
 
+import { staggerRevealHome } from 'animations';
+
 const IndexPage = ({ data }) => {
   const container = useRef(null);
   const imageContainer = useRef(null);
-  // const imageReveal = CSSRulePlugin.getRule(imageContainer.current);
 
   useEffect(() => {
     const contentElements = container.current.children;
     const [image] = imageContainer.current.children;
 
-    const tl = gsap.timeline({ defaults: { ease: 'power3.out', duration: 1.4, delay: 1 } });
-    const tl2 = gsap.timeline({ defaults: { ease: 'power3.out', duration: 1.4, delay: 1 } });
-
-    tl.from(contentElements, {
-      y: -60,
-      autoAlpha: 0,
-      stagger: 0.15,
-    });
-
-    tl2.from(image, { scale: 1.6, transformOrigin: 'center' }, '-=0.5');
+    staggerRevealHome([contentElements, image]);
   }, [container, imageContainer]);
 
   return (

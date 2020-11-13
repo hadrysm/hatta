@@ -1,7 +1,6 @@
 import React, { useEffect, useRef } from 'react';
 import PropTypes from 'prop-types';
 import styled from 'styled-components';
-import gsap from 'gsap';
 import Img from 'gatsby-image';
 import { graphql } from 'gatsby';
 
@@ -9,6 +8,8 @@ import SEO from 'components/utilities/SEO/SEO';
 import HeadlineContent from 'components/molecules/HeadlineContent/HeadlineContent';
 import Headline from 'components/atoms/Headline/Headline';
 import Paragraph from 'components/atoms/Paragraph/Paragraph';
+
+import { staggerRevealAbout } from 'animations';
 
 const aboutHeadline = {
   title: 'about',
@@ -21,21 +22,7 @@ const AboutPage = ({ data }) => {
 
   useEffect(() => {
     const wrapper = container.current;
-    const elements = container.current.children;
-
-    const tl = gsap.timeline({ defaults: { ease: 'power3.out', delay: 1 } });
-
-    gsap.set(wrapper, { scaleX: 0, transformOrigin: 'left' });
-
-    tl.to(wrapper, { duration: 1.5, scaleX: 1 }).fromTo(
-      elements,
-      {
-        autoAlpha: 0,
-        y: -60,
-      },
-      { duration: 1, autoAlpha: 1, y: 0, stagger: 0.15 },
-      '-=1.5',
-    );
+    staggerRevealAbout(wrapper);
   }, [container]);
 
   return (

@@ -1,6 +1,8 @@
 import React from 'react';
 import PropTypes from 'prop-types';
+import gsap from 'gsap';
 import styled from 'styled-components';
+
 import TPLink from 'providers/PageTransitionProviders';
 
 import routes from 'routes';
@@ -24,17 +26,41 @@ const menuData = [
   },
 ];
 
-const NavList = ({ isMenuOpen }) => (
-  <Wrapper isMenuOpen={isMenuOpen}>
-    <List>
-      {menuData.map(({ path, label }) => (
-        <ListItem key={path}>
-          <TPLink to={path}>{label}</TPLink>
-        </ListItem>
-      ))}
-    </List>
-  </Wrapper>
-);
+const NavList = ({ isMenuOpen }) => {
+  const handleHover = e => {
+    gsap.to(e.target, {
+      duration: 0.3,
+      scale: 1.2,
+      skewX: 4,
+      ease: 'power1.inOut',
+    });
+  };
+
+  const handleHoverExit = e => {
+    gsap.to(e.target, {
+      duration: 0.3,
+      scale: 1,
+      skewX: 0,
+      ease: 'power1.inOut',
+    });
+  };
+
+  return (
+    <Wrapper isMenuOpen={isMenuOpen}>
+      <List>
+        {menuData.map(({ path, label }) => (
+          <ListItem
+            key={path}
+            onMouseEnter={e => handleHover(e)}
+            onMouseOut={e => handleHoverExit(e)}
+          >
+            <TPLink to={path}>{label}</TPLink>
+          </ListItem>
+        ))}
+      </List>
+    </Wrapper>
+  );
+};
 
 const Wrapper = styled.div`
   position: fixed;
@@ -71,6 +97,7 @@ const List = styled.ul`
 `;
 
 const ListItem = styled.li`
+  display: block;
   margin-bottom: 5rem;
   font-size: ${({ theme }) => theme.font.size.xs};
   font-weight: ${({ theme }) => theme.font.weight.semiBold};

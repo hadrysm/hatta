@@ -25,6 +25,7 @@ const ContactForm = () => {
       if (!message) {
         errors.message = 'Required';
       }
+
       return errors;
     },
     onSubmit: data => {

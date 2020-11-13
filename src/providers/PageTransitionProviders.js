@@ -22,7 +22,7 @@ const createBox = bgColor => {
   return { box, body, vw };
 };
 
-const PageTransitionProviders = ({ children, to }) => {
+const PageTransitionProviders = ({ children, to, ...props }) => {
   const { colors } = useContext(ThemeContext);
 
   const exitAnimation = () => {
@@ -55,6 +55,8 @@ const PageTransitionProviders = ({ children, to }) => {
 
   return (
     <TransitionLink
+      {...props}
+      style={{ display: 'block' }}
       to={to}
       exit={{
         trigger: ({ exit, node }) => exitAnimation(exit, node),

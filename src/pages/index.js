@@ -24,7 +24,7 @@ const IndexPage = ({ data }) => {
   }, [container, imageContainer]);
 
   return (
-    <>
+    <Wrapper>
       <SEO title="Home" />
       <ContentWrapper ref={container}>
         <Headline isBig>
@@ -39,7 +39,7 @@ const IndexPage = ({ data }) => {
       <ImageWrapper ref={imageContainer}>
         <StyledImg fluid={data.file.childImageSharp.fluid} />
       </ImageWrapper>
-    </>
+    </Wrapper>
   );
 };
 
@@ -52,6 +52,17 @@ export const query = graphql`
         }
       }
     }
+  }
+`;
+
+const Wrapper = styled.div`
+  display: flex;
+  flex-direction: column;
+  justify-content: space;
+  align-items: center;
+
+  ${({ theme }) => theme.mq.bigTablet} {
+    flex-direction: row;
   }
 `;
 
@@ -87,6 +98,7 @@ const ImageWrapper = styled.div`
 
   ${({ theme }) => theme.mq.tablet} {
     width: 80%;
+    max-width: 40rem;
     margin: 2rem auto;
   }
 

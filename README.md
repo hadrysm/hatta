@@ -52,4 +52,3 @@ Builds the app for production to the `public` folder.<br />
 ## Author
 
 - **[Mateusz Hadryś](https://github.com/hadrysm)** - _coding_
-- **[Hello Roman](https://github.com/hadrysm)** - _design_

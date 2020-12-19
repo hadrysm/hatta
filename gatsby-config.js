@@ -19,23 +19,20 @@ module.exports = {
         apiToken: process.env.DATOCMS_READ_ONLY_API_KEY,
       },
     },
-    // {
-    //   resolve: `gatsby-plugin-layout`,
-    //   options: {
-    //     component: require.resolve(`./src/templates/MainTemplate/MainTemplate.js`),
-    //   },
-    // },
     {
-      resolve: 'gatsby-plugin-prefetch-google-fonts',
+      resolve: `gatsby-plugin-webfonts`,
       options: {
-        fonts: [
-          {
-            family: 'Montserrat',
-            variants: ['400', '600', '700'],
-          },
-        ],
+        fonts: {
+          google: [
+            {
+              family: 'Montserrat',
+              variants: ['400', '600', '700'],
+            },
+          ],
+        },
       },
     },
+
     'gatsby-plugin-styled-components',
     {
       resolve: 'gatsby-plugin-eslint',

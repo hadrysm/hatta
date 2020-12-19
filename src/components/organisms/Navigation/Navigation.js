@@ -31,9 +31,7 @@ const Navigation = () => {
 };
 
 const Wrapper = styled.nav`
-  position: absolute;
-  top: 0rem;
-  left: 0rem;
+  position: relative;
   padding: 1.5rem 2rem;
   width: 100%;
   display: flex;

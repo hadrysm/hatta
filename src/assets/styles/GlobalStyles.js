@@ -18,6 +18,10 @@ body{
   font-size: 1.6rem;
   font-family: ${({ theme }) => theme.font.family.primary};
   background-color: ${({ theme }) => theme.colors.background};
+
+  &.no-scroll{
+    overflow: hidden;
+  }
 }
 
 ul {

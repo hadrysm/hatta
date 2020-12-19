@@ -45,7 +45,7 @@ const NavList = ({ isMenuOpen }) => {
 };
 
 const Wrapper = styled.div`
-  position: fixed;
+  position: absolute;
   top: 0;
   right: 0;
   width: 50vw;

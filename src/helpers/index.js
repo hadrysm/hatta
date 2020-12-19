@@ -18,7 +18,7 @@ export const splitTextToChars = node => {
   return node.children;
 };
 
-export const createBox = bgColor => {
+export const createBox = (bgColor = '#000f24') => {
   const { body } = document;
 
   const box = document.createElement('div');

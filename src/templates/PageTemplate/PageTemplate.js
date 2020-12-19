@@ -24,7 +24,7 @@ const Wrapper = styled.div`
   width: 100%;
   max-width: ${({ theme }) => theme.layout.maxContainerWidth};
   min-height: 100vh;
-  padding: 1rem 1rem 0 1rem;
+  padding: 0 1rem 0 1rem;
   margin: 0 auto;
   position: static;
   overflow: hidden;

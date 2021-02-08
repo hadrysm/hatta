@@ -1,8 +1,17 @@
 # hatta website | simple blog
 
-- Live: [website](https://hadrysm-hatta.netlify.app/)
+<img width="100%" src="https://i.ibb.co/DzYWyMJ/Group-2.png" />
 
-## Built With
+## Live 📍
+
+- [website](https://hadrysm-hatta.netlify.app/)
+
+## Project Overview 🎉
+
+Abigail's website was my first contact with Gatsby. On it I learned how to generate pages statistically and got to know GraphQL, which has become my favorite. The entire website design comes from the course from Adam Romański. I enlivened her a bit 🤗 and added RWD. I used <a href="https://bradfrost.com/blog/post/atomic-web-design">
+Atomic Design</a> for components architecture. I used <a href="https://www.datocms.com/">Dato CMS</a> for handling data.
+
+## Tech/framework used 🔧
 
 - Gatsby
 - react hooks
@@ -12,43 +21,34 @@
 - gsap
 - eslint | prettier
 
-## Getting Started
+## Screenshots 📺
 
-To download the project, download it to your computer. Then follow the instructions.
+<p align="center">
+    <img src="https://i.ibb.co/BySbtgX/screenshot-hadrysm-hatta-netlify-app-1612801551307.png" alt="Screen Shot">
+</p>
 
-### Installing
+<p align="center">
+    <img src="https://i.ibb.co/RQFZ8k7/screenshot-hadrysm-hatta-netlify-app-articles-1612802059458.png" alt="Screen Shot">
+</p>
 
-To initiate the project, enter in the terminal:
+<p align="center">
+    <img src="https://i.ibb.co/VW49ZZy/screenshot-hadrysm-hatta-netlify-app-about-1612802017549.png" alt="Screen Shot">
+</p>
 
-```
-npm install
-```
+<p align="center">
+    <img src="https://i.ibb.co/RhRH8YB/screenshot-hadrysm-hatta-netlify-app-gallery-1612802035226.png" alt="Screen Shot">
+</p>
 
-You need create [datoCMS](https://www.datocms.com/) account and add .env file. In repository you can find .env-example file.
 
-```
-add .env file
-```
+## Code Example/Issues 🔍
 
-To start a live server, enter in the terminal:
+If you have any issues, please let me know in the issues section or directly to m.hadrys.95@gmail.com
 
-```
-gatsby develop
-```
+## Credits and sources
 
-Runs the app in the development mode.<br />
-Open [http://localhost:8000](http://localhost:8000) to view it in the browser.
-
-To create a distribution version, type in terminal:
-
-```
-
-gatsby build
-
-```
-
-Builds the app for production to the `public` folder.<br />
+Illustrations: undraw <br/>
+Icons: react-icons
 
 ## Author
 
-- **[Mateusz Hadryś](https://github.com/hadrysm)** - _coding_
+- **[Mateusz Hadryś](https://github.com/hadrysm)**
